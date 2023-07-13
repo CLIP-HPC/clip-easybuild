@@ -1,0 +1,25 @@
+name: Sync Fork with Main
+
+on:
+  schedule:
+    - cron: '30 * * * *'  
+  
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Fetch upstream changes to main
+        run: DEBUG=api gh repo sync CLIP-HPC/easybuild-easyconfigs -b main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Fetch upstream changes to develop
+        run: DEBUG=api gh repo sync CLIP-HPC/easybuild-easyconfigs -b develop
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
