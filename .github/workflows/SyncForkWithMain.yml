@@ -14,9 +14,9 @@ jobs:
       - name: Fetch upstream changes to main
         run: DEBUG=api gh repo sync CLIP-HPC/easybuild-easyconfigs -b main
         env:
-          GITHUB_TOKEN: ${{ secrets.AB_SYNC_UPSTREAM_EB_CONFIG }}
+          GITHUB_TOKEN: ${{ secrets.EB_SYNC_UPSTEAM_CONFIGS_PAT }}
       
       - name: Fetch upstream changes to develop
         run: DEBUG=api gh repo sync CLIP-HPC/easybuild-easyconfigs -b develop
         env:
-          GITHUB_TOKEN: ${{ secrets.AB_SYNC_UPSTREAM_EB_CONFIG }}
+          GITHUB_TOKEN: ${{ secrets.EB_SYNC_UPSTEAM_CONFIGS_PAT }}
